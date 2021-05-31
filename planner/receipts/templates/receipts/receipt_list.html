@@ -1,0 +1,29 @@
+
+
+<h1>My Receipts</h1>
+<a href="{% url 'receipt-create' %}">Add Receipt</a>
+
+
+
+
+<table>
+    <tr>
+        <th>Receipts</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for receipt in receipts %}
+    <tr>
+        <td>{{ receipt.title }}</td>
+        <td><a href="{% url 'receipt' receipt.id %}">View Receipt</a> </td>
+        <td><a href="{% url 'receipt-update' receipt.id %}">Edit</a> </td>
+        <td><a href="{% url 'receipt-delete' receipt.id %}">Delete</a> </td>
+    </tr>
+    {% empty %}
+        <h3>No receipt in list</h3>
+    {% endfor %}
+</table>
+
+
+
+

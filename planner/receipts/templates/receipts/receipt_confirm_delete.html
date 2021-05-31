@@ -1,0 +1,7 @@
+<a href="{% url 'receipts' %}">Back</a>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this receipt? "{{receipt}}"</p>
+    <input type="submit" value="Delete"/>
+</form>
