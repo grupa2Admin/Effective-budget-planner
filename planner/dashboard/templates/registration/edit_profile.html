@@ -1,0 +1,32 @@
+<{% extends 'dashboard/main.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+    <body class="bg-light">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Profile Update</h3></div>
+                                    <div class="card-body">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            {{ form|crispy }}
+                                            <br>
+                                            <button class="btn btn-secondary" type="submit" id="submit">Update profile</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+{% endblock %}

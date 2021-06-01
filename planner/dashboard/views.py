@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserChangeForm
 # Create your views here.
-from dashboard.forms import RegisterForm, LoginForm
+from dashboard.forms import RegisterForm, UpdateProfileForm
 from django.shortcuts import render
 from django.contrib.auth import views as auth_views
 from django.views import generic
@@ -16,42 +17,40 @@ def main(request):
     return render(request, 'dashboard/main.html')
 
 
-# def LoginPage(request):
-#     if request.user.is_authenticated:
-#         return redirect('/')
-#     else:
-#         if request.method == 'POST':
-#             username = request.POST.get('username')
-#             password = request.POST.get('password')
-#
-#             user = authenticate(request, username=username, password=password)
-#
-#             if user is not None:
-#                 return redirect('/')
-#             else:
-#                 messages.info(request, 'Username or password is incorrect')
-#
-#         context = {}
-#         return render(request, 'dashboard/login.html', context)
-#
+# Own view for redirecting after changing password
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('main')
+
+
+class UserEditView(generic.UpdateView):
+    form_class = UpdateProfileForm
+    template_name = 'registration/edit_profile.html'
+    success_url = reverse_lazy('main')
+
+    def get_object(self):
+        return self.request.user
+
+
 class LoginView(auth_views.LoginView):
-    form_class = LoginForm
-    template_name = 'dashboard/login.html'
+    form = AuthenticationForm
+    template_name = 'registration/login.html'
 
 
 def registerPage(request):
     form = RegisterForm()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
-
-            return redirect('login')
-
+            return redirect('main')
+    else:
+        form = RegisterForm()
     context = {'form': form}
-    return render(request, 'dashboard/register.html')
+    return render(request, 'registration/register.html', context)
 
 
 def forgotPasswordPage(request):
