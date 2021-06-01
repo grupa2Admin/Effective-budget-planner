@@ -54,4 +54,4 @@ def registerPage(request):
 
 
 def forgotPasswordPage(request):
-    return render(request, 'registration/password_reset.html')
+    return render(request, 'dashboard/password.html')

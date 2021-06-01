@@ -17,6 +17,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
 from django.views.generic.base import RedirectView
 from dashboard import views
+
 from dashboard.views import PasswordsChangeView, UserEditView
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
@@ -29,12 +30,15 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.registerPage, name='register'),
-    path('password-reset/', auth_views.PasswordResetView, name='forgot_password'),
+    path('password-reset/', views.forgotPasswordPage, name='forgot_password'),
     path('password/', PasswordsChangeView.as_view(template_name='registration/password_change.html'),
          name='password_change'),
-    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'),
-         name='password_reset'),
-    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
-        template_name='registration/password_reset_done.html'), name='password_reset_done'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile')
 ]
+
+# To be done later #
+# path('password-reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'),
+#      name='password_reset'),
+# path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
+#     template_name='registration/password_reset_done.html'), name='password_reset_done'),
+#     path('password-reset/', auth_views.PasswordResetView, name='forgot_password'),
