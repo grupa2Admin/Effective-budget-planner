@@ -20,15 +20,21 @@ from dashboard import views
 from dashboard.views import PasswordsChangeView, UserEditView
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+logo_view = RedirectView.as_view(url='/static/logo.png', permanent=True)
 
 urlpatterns = [
     re_path(r'^favicon\.ico$', favicon_view),
+    re_path(r'^logo\.png$', logo_view),
     path('', views.main, name="main"),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.registerPage, name='register'),
-    path('passrecovery/', views.forgotPasswordPage, name='forgot_password'),
+    path('password-reset/', auth_views.PasswordResetView, name='forgot_password'),
     path('password/', PasswordsChangeView.as_view(template_name='registration/password_change.html'),
          name='password_change'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'),
+         name='password_reset'),
+    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='registration/password_reset_done.html'), name='password_reset_done'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile')
 ]

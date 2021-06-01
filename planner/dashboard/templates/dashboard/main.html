@@ -17,7 +17,9 @@
             <!-- Navbar Brand-->
 
             <!-- Insert a group icon -->
-            <div class="navbar-brand ps-3"><i>Home Budget</i></div>
+
+            <img class="img-thumbnail" src="{% static "images/logo.png" %}" alt="Thumbnail image">
+            <div class="navbar-brand ps-2 rm-1"><i>Home Budget</i></div>
 {#            <div class="navbar-brand ps-3">Home Budget</div>#}
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-arrows-alt-h"></i></button>
@@ -139,13 +141,23 @@
                                         <a class="nav-link" href="#">Monthly</a>
                                         <a class="nav-link" href="#">Annual</a>
                                     </nav>
-
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceipts" aria-expanded="false" aria-controls="collapseReceipts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-balance-scale-right"></i></div>
+                                Receipts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseReceipts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionReceipts">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="#">List</a>
+                                        <a class="nav-link" href="#">Add</a>
+                                    </nav>
                                 </nav>
                             </div>
                             <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Charts</a>
 
                         </div>
                     </div>
