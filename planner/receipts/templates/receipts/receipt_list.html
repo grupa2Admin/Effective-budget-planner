@@ -1,28 +1,58 @@
+{% extends 'dashboard/main.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Receipts List{% endblock %}
+
+{% block content %}
+
+<body class="bg-light">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                        <h1>My Receipts</h1>
+
+                            <table>
+                                <tr>
+                                    <th>Receipts</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                {% for receipt in receipts %}
+                                <tr>
+                                    <td><strong>{{ receipt.title }}</strong></td>
+                                    <td>{{ receipt.date }}</td>
+                                    <td></td>
+                                    <td><a class="btn btn-secondary btn-sm" href="{% url 'receipt' receipt.id %}">View Receipt</a> </td>
+                                    <td><a class="btn btn-secondary btn-sm" href="{% url 'receipt-update' receipt.id %}">Edit</a> </td>
+                                    <td><a class="btn btn-secondary btn-sm" href="{% url 'receipt-delete' receipt.id %}">Delete</a> </td>
+                                </tr>
+                                {% empty %}
+                                    <h3>No receipt in list</h3>
+                                {% endfor %}
+                            </table>
+                            <br><br><br><br><br><br>
+
+                            <a class="btn btn-secondary" href="{% url 'receipt-create' %}">Add Receipt</a>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
 
 
-<h1>My Receipts</h1>
-<a href="{% url 'receipt-create' %}">Add Receipt</a>
+{% endblock %}
 
 
 
 
-<table>
-    <tr>
-        <th>Receipts</th>
-        <th></th>
-        <th></th>
-    </tr>
-    {% for receipt in receipts %}
-    <tr>
-        <td>{{ receipt.title }}</td>
-        <td><a href="{% url 'receipt' receipt.id %}">View Receipt</a> </td>
-        <td><a href="{% url 'receipt-update' receipt.id %}">Edit</a> </td>
-        <td><a href="{% url 'receipt-delete' receipt.id %}">Delete</a> </td>
-    </tr>
-    {% empty %}
-        <h3>No receipt in list</h3>
-    {% endfor %}
-</table>
+
 
 
 
