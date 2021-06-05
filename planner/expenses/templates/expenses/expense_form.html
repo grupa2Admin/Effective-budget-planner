@@ -2,7 +2,8 @@
 {% load static %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
-{% block title %}Receipt Details{% endblock %}
+{% block title %}Expenses List{% endblock %}
+
 
 {% block content %}
 <body class="bg-light">
@@ -15,13 +16,13 @@
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Do you want to add/edit?</h3></div>
                                 <div class="card-body">
-                                    <h3>Receipt: {{receipt}}</h3>
+                                    <h3>Expense: {{expense}}</h3>
 
                                     <form method="POST" action="" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form|crispy}}
                                     <br>
-                                    <a class="btn btn-secondary" href="{% url 'receipts' %}">Back</a>
+                                    <a class="btn btn-secondary" href="{% url 'expenses' %}">Back</a>
 
                                     <button class="btn btn-secondary" id="submit">Save</button>
                                     </form>
@@ -39,4 +40,3 @@
 
 
 {% endblock %}
-
