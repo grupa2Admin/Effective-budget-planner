@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'receipts.apps.ReceiptsConfig',
 
+
 ]
 
 MIDDLEWARE = [

@@ -14,13 +14,14 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                         <h1>My Receipts</h1>
+                            <br><br>
 
                             <table>
                                 <tr>
-                                    <th>Receipts</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
+
                                 {% for receipt in receipts %}
                                 <tr>
                                     <td><strong>{{ receipt.title }}</strong></td>
@@ -36,6 +37,7 @@
                             </table>
                             <br><br><br><br><br><br>
 
+                            <br><br><br><br><br><br>
                             <a class="btn btn-secondary" href="{% url 'receipt-create' %}">Add Receipt</a>
 
                         </div>

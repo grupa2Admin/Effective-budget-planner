@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ReceiptsList, ReceiptDetail, ReceiptCreate, ReceiptUpdate,DeleteView
+from .views import ReceiptsList, ReceiptDetail, ReceiptCreate, ReceiptUpdate, DeleteView
 
 urlpatterns = [
     path('', ReceiptsList.as_view(), name='receipts'),

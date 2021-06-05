@@ -30,5 +30,6 @@ urlpatterns = [
     path('passrecovery/', views.forgotPasswordPage, name='forgot_password'),
     path('password/', PasswordsChangeView.as_view(template_name='registration/password_change.html'),
          name='password_change'),
-    path('edit_profile/', UserEditView.as_view(), name='edit_profile')
+    path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
+
 ]
