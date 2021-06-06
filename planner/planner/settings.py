@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'dashboard.apps.DashboardConfig',
     'receipts.apps.ReceiptsConfig',
+    'income.apps.IncomeConfig'
 
 
 ]
