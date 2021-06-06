@@ -17,11 +17,8 @@
             <!-- Navbar Brand-->
 
             <!-- Insert a group icon -->
-<<<<<<< HEAD
+
             <img class="img-thumbnail" src="{% static "images/logo1.png" %}" alt="...">
-=======
-            <img src="{% static "images/logo1.png" %}" alt="Thumbnail image">
->>>>>>> 8b16d17185eafd2e46ae130f6b3527b04a63145a
             <div class="navbar-brand ps-2 rm-1"><i>Home Budget</i></div>
 
             <!-- Sidebar Toggle-->
@@ -30,6 +27,7 @@
 
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                {% csrf_token %}
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
@@ -142,7 +140,7 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="#">Monthly</a>
                                         <a class="nav-link" href="#">Annual</a>
-                                    </nav>
+                                  </nav>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceipts" aria-expanded="false" aria-controls="collapseReceipts">
@@ -153,11 +151,12 @@
                             <div class="collapse" id="collapseReceipts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionReceipts">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="#">List</a>
-                                        <a class="nav-link" href="#">Add</a>
+                                        <a class="nav-link" href="{% url 'receipts' %}">List</a>
+                                        <a class="nav-link" href="{% url 'receipt-create' %}">Add</a>
                                     </nav>
                                 </nav>
                             </div>
+
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Charts</a>
 
