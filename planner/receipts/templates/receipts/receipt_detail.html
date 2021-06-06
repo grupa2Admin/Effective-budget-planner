@@ -22,7 +22,7 @@
                                     <h6>Description: {{receipt.description}}</h6>
                                 <h6>Receipt date: {{receipt.date}}</h6>
 
-                                <a class="btn btn-secondary" href="{% url 'receipts' %}">Back</a>
+                                <a class="btn btn-secondary" href="javascript: window.history.back()">Back</a>
                                     <a class="btn btn-secondary" href="{% url 'receipt-update' receipt.id %}">Edit</a>
 {#                                    <input class="form-control" type="submit" name="Delete"  placeholder="Delete">#}
                                     <button class="btn btn-secondary" id="submit" >Delete</button>

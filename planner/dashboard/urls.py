@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.urls import path, re_path
 from django.views.generic.base import RedirectView
-from dashboard import views
-from dashboard.views import PasswordsChangeView, UserEditView
+from . import views
+from .views import PasswordsChangeView, UserEditView
+from .views import search_page
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 logo_view = RedirectView.as_view(url='/static/logo.png', permanent=True)
@@ -43,4 +44,6 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
         template_name='password/password_reset_complete.html'), name='password_reset_complete'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
+    path('search_page/', views.search_page, name='search_page'),
+
 ]
