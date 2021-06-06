@@ -26,6 +26,7 @@
 
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                {% csrf_token %}
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
@@ -138,6 +139,19 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="#">Monthly</a>
                                         <a class="nav-link" href="#">Annual</a>
+                                  </nav>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceipts" aria-expanded="false" aria-controls="collapseReceipts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-balance-scale-right"></i></div>
+                                Receipts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseReceipts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionReceipts">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="{% url 'receipts' %}">List</a>
+                                        <a class="nav-link" href="{% url 'receipt-create' %}">Add</a>
                                     </nav>
                                 </nav>
                             </div>
