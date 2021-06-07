@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class ExpensesList(LoginRequiredMixin, ListView):
     model = Expense
     context_object_name = 'expenses'
@@ -14,9 +15,6 @@ class ExpensesList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['expenses'] = context['expenses'].filter(user=self.request.user)
         return context
-
-
-
 
 
 class ExpenseDetail(LoginRequiredMixin, DetailView):

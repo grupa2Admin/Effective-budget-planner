@@ -5,18 +5,16 @@ from django.utils.timezone import now
 
 class Expense(models.Model):
     CATEGORIES = (
-        ('H', 'Housing'),
-        ('T', 'Transportation'),
-        ('F', 'Food'),
-        ('U', 'Utilities'),
-        ('TR', 'Travel'),
-        ('M', 'Medical & Healthcare'),
-        ('S', 'Saving, Investing'),
-        ('C', 'Clothes'),
-        ('E', 'Entertainment'),
-        ('MI', 'Miscellaneous'),
-        ('FD', 'Food'),
-        ('O', 'other')
+        ('Housing', 'Housing'),
+        ('Transport', 'Transport'),
+        ('Food', 'Food'),
+        ('Utilities', 'Utilities'),
+        ('Travel', 'Travel'),
+        ('Medical', 'Medical & Healthcare'),
+        ('Savings', 'Saving, Investing'),
+        ('Clothes', 'Clothes'),
+        ('Entertainment', 'Entertainment'),
+        ('Other', 'Other'),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
