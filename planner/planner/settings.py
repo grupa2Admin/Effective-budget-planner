@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     # Third Party applications #
     'crispy_forms',
-
     # User applications #
     'receipts.apps.ReceiptsConfig',
     'dashboard.apps.DashboardConfig',
