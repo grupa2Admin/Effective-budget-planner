@@ -98,6 +98,7 @@
                                 <div class="sb-nav-link-icon"><i class="far fa-calendar-check"></i></div>
                                 Calendar
                             </a>
+
                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseIncomes" aria-expanded="false" aria-controls="collapseIncomes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
                                 Incomes
@@ -106,11 +107,11 @@
                             <div class="collapse" id="collapseIncomes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionIncomes">
 
+
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#">List</a>
-                                            <a class="nav-link" href="#">Add</a>
-                                            <a class="nav-link" href="#">Delete</a>
-                                        </nav>
+                                        <a class="nav-link" href="{% url 'incomes' %}">List</a>
+                                        <a class="nav-link" href="{% url 'income-create' %}">Add</a>
+                                       </nav>
 
                                 </nav>
                             </div>
