@@ -1,0 +1,64 @@
+{% extends 'dashboard/main.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Delete Receipt{% endblock %}
+
+
+
+
+{% block content %}
+<body class="bg-light">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Do you really want do delete this receipt?</h3></div>
+                                <div class="card-body">
+                                    <h3>Receipt: {{receipt}}</h3>
+                                    <img src="{{receipt.image.url}}" alt="image" class="img-thumbnail" width="300px" height="500px">
+
+                                    <h6>Description: {{receipt.description}}</h6>
+                                    <h6>Receipt date: {{receipt.date}}</h6>
+
+                                    <form method="POST" action="">
+                                    {% csrf_token %}
+                                    {{ form|crispy}}
+                                    <br>
+                                    <a class="btn btn-secondary" href="{% url 'receipts' %}">Back</a>
+{#                                    <input class="form-control" type="submit" name="Delete"  placeholder="Delete">#}
+                                    <button class="btn btn-secondary" id="submit" >Delete</button>
+                                    </form>
+
+                                 </div>
+                             </div>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+'''<a href="{% url 'receipts' %}">Back</a>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this receipt? "{{receipt}}"</p>
+    <input type="submit" value="Delete"/>
+</form>'''

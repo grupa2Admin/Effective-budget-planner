@@ -9,9 +9,11 @@ from django.shortcuts import render
 from django.contrib.auth import views as auth_views
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import render
 
 
 # Create your views here.
+
 
 def main(request):
     return render(request, 'dashboard/main.html')
