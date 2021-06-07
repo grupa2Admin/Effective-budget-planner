@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -10,15 +10,17 @@
         <link href="{% static "css/styles.css" %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <title>{% block title %}{% endblock %}</title>
-
+        {% block style %}{% endblock %}
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
 
             <!-- Insert a group icon -->
-            <div class="navbar-brand ps-3"><i>Home Budget</i></div>
-{#            <div class="navbar-brand ps-3">Home Budget</div>#}
+
+            <img class="img-thumbnail" src="{% static "images/logo1.png" %}" alt="...">
+            <div class="navbar-brand ps-2 rm-1"><i>Home Budget</i></div>
+
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-arrows-alt-h"></i></button>
             <!-- Who is logged in-->
@@ -34,18 +36,17 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-secret"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         {% if user.is_authenticated %}
-                            {% if user.is_superuser %}
+                            {% if user.is_staff %}
                                 <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Page</a></li>
-                                <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Profile Page</a></li>
                                 <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'user_update' %}">User Update</a></li>
                                 <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             {% else %}
-                                <li><a class="dropdown-item" href="{% url 'password_change' %}">Profile Page</a></li>
-                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'user_update' %}">User Update</a></li>
                                 <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             {% endif %}
@@ -87,7 +88,7 @@
                                         <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
                                         {% endif %}
                                         <a class="nav-link" href="{% url 'register' %}">Register</a>
-                                        <a class="nav-link" href="{% url 'forgot_password' %}">Forgot Password</a>
+                                        <a class="nav-link" href="{% url 'password_reset' %}">Forgot Password</a>
                                     </nav>
 
                                 </nav>
@@ -97,13 +98,13 @@
                                 <div class="sb-nav-link-icon"><i class="far fa-calendar-check"></i></div>
                                 Calendar
                             </a>
-                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEarnings" aria-expanded="false" aria-controls="collapseEarnings">
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseIncomes" aria-expanded="false" aria-controls="collapseIncomes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                                Earnings
+                                Incomes
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseEarnings" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionEarnings">
+                            <div class="collapse" id="collapseIncomes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionIncomes">
 
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="#">List</a>
@@ -113,13 +114,13 @@
 
                                 </nav>
                             </div>
-                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExpenses" aria-expanded="false" aria-controls="collapseExpenses">
+                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOutcomes" aria-expanded="false" aria-controls="collapseOutcomes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-money-bill-alt"></i></div>
-                                Expenses
+                                Outcomes
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionExpenses">
+                            <div class="collapse" id="collapseOutcomes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionOutcomes">
 
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="{% url 'expenses' %}">List</a>
@@ -139,11 +140,11 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="#">Monthly</a>
                                         <a class="nav-link" href="#">Annual</a>
-                                    </nav>
+                                  </nav>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceipts" aria-expanded="false" aria-controls="collapseReceipts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-balance-scale-right"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-receipt"></i></div>
                                 Receipts
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -155,10 +156,9 @@
                                     </nav>
                                 </nav>
                             </div>
+
                             <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>Charts</a>
 
                         </div>
                     </div>
@@ -174,13 +174,8 @@
             <div id="layoutSidenav_content">
                 <main>
                     {% block content %}{% endblock %}
-                    <div class="container-fluid px-4">
-                        <ol class="breadcrumb mb-4">
-
-                        </ol>
-                    </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-2 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2021</div>
