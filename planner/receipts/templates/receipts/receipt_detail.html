@@ -12,7 +12,7 @@
             <main>
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-7">
+                        <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Receipt Details</h3></div>
                                 <div class="card-body">
@@ -23,9 +23,9 @@
                                 <h6>Receipt date: {{receipt.date}}</h6>
 
                                 <a class="btn btn-secondary" href="{% url 'receipts' %}">Back</a>
-                                    <a class="btn btn-secondary" href="{% url 'receipt-update' receipt.id %}">Edit</a>
+                                    <a class="btn btn-primary" href="{% url 'receipt-update' receipt.id %}">Edit</a>
 {#                                    <input class="form-control" type="submit" name="Delete"  placeholder="Delete">#}
-                                    <button class="btn btn-secondary" id="submit" >Delete</button>
+                                    <button class="btn btn-primary" id="submit" >Delete</button>
                                  </div>
                              </div>
 
