@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'receipts.apps.ReceiptsConfig',
     'expenses.apps.ExpensesConfig',
 
-
 ]
 
 MIDDLEWARE = [

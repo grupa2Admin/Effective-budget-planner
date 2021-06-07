@@ -1,22 +1,22 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserChangeForm
-# Create your views here.
-from dashboard.forms import RegisterForm, UpdateProfileForm
-from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserChangeForm, PasswordResetForm
 from django.contrib.auth import views as auth_views
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
+
+# Create your views here.
+
+from dashboard.forms import RegisterForm, UpdateProfileForm
 
 
 # Create your views here.
 
 
 def main(request):
-    return render(request, 'dashboard/main.html')
+    return render(request, 'dashboard/background.html')
 
 
 # Own view for redirecting after changing password
@@ -28,7 +28,7 @@ class PasswordsChangeView(PasswordChangeView):
 
 class UserEditView(generic.UpdateView):
     form_class = UpdateProfileForm
-    template_name = 'registration/edit_profile.html'
+    template_name = 'registration/edit_user.html'
     success_url = reverse_lazy('main')
 
     def get_object(self):
@@ -53,7 +53,3 @@ def registerPage(request):
         form = RegisterForm()
     context = {'form': form}
     return render(request, 'registration/register.html', context)
-
-
-def forgotPasswordPage(request):
-    return render(request, 'dashboard/password.html')

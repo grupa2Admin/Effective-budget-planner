@@ -16,7 +16,6 @@ class UpdateProfileForm(UserChangeForm):
         fields = ["username", "email", "first_name", "last_name"]
 
 
-
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
 
