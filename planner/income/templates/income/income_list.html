@@ -1,6 +1,6 @@
 {% extends 'dashboard/main.html' %}
 {% load static %}
-{% block title %}Receipts List{% endblock %}
+{% block title %}Income List{% endblock %}
 
 {% block content %}
 <br><br><br>
@@ -10,45 +10,45 @@
         <div class="card">
             <div class="card-header card-header-primary">
                 <center>
-                <h2 class="card-title ">List of Expenses</h2>
-                 <a class="nav-link" href="{% url 'main' %}">
-                     <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
-                 </a>
+                    <h2 class="card-title ">My Income</h2>
+                    <a class="nav-link" href="{% url 'main' %}">
+                    <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
+                    </a>
                 </center>
             </div>
             <div class="card-body">
                 <div class="table-responsive-lg">
                     <table class="table" >
                         <thead class=" text-primary">
-                            <th>Expense Title</th><th>Amount</th><th>Date occurred</th>
+                            <th>Income Title</th><th>Amount</th><th>Date received</th>
                         </thead>
                         <tbody>
-                            {% for expense in expenses %}
+                            {% for income in incomes %}
                             <tr>
-                                <td><strong>{{ expense.title }}</strong></td>
-                                <td>{{ expense.amount }}</td>
-                                <td>{{ expense.date }}</td>
+                                <td><strong>{{ income.title }}</strong></td>
+                                <td>{{ income.amount }}</td>
+                                <td>{{ income.date }}</td>
                                 <td></td>
                                 <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                 <td>
                                     <div class="w3-bar w3-right">
-                                    <a class="w3-bar-item w3-button w3-red w3-right" href="{% url 'expense-delete' expense.id %}">Delete</a>
-                                    <a class="w3-bar-item w3-button w3-blue w3-right" href="{% url 'expense-update' expense.id %}">Edit</a>
-                                    <a class="w3-bar-item w3-button w3-green w3-right" href="{% url 'expense' expense.id %}">View</a>
+                                    <a class="w3-bar-item w3-button w3-red w3-right" href="{% url 'income-delete' income.id %}">Delete</a>
+                                    <a class="w3-bar-item w3-button w3-blue w3-right" href="{% url 'income-update' income.id %}">Edit</a>
+                                    <a class="w3-bar-item w3-button w3-green w3-right" href="{% url 'income' income.id %}">View</a>
                                     </div>
                                 </td>
                                 </form>
                             </tr>
                             {% empty %}
-                            <h3>No receipt in list</h3>
+                            <h3>No income detected</h3>
                             {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
-
             </div>
             <div class="card-footer text-left py-3">
-                        <a class="btn btn-secondary" href="{% url 'expense-create' %}">Add Expense</a>
+                <a class="btn btn-secondary" href="{% url 'income-create' %}">Add Income</a>
             </div>
         </div>
     </div>
@@ -56,3 +56,5 @@
 </div>
 
 {% endblock %}
+
+

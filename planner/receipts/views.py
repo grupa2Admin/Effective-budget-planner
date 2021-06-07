@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
 class ReceiptsList(LoginRequiredMixin, ListView):
     model = Receipt
     context_object_name = 'receipts'
@@ -18,9 +17,6 @@ class ReceiptsList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['receipts'] = context['receipts'].filter(user=self.request.user)
         return context
-
-
-
 
 
 class ReceiptDetail(LoginRequiredMixin, DetailView):
@@ -48,6 +44,3 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     model = Receipt
     context_object_name = 'receipt'
     success_url = reverse_lazy('receipts')
-
-
-

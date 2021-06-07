@@ -15,18 +15,21 @@
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Expense Details</h3></div>
+                                <a class="nav-link" href="{% url 'main' %}">
+                                <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
+                                </a>
                                 <div class="card-body">
-
-                                <h4>Expense: {{expense}}</h4>
-                                    <h6>Amount: {{expense.amount}}</h6>
-                                    <h6>Description: {{expense.description}}</h6>
-                                <h6>Expense date: {{expense.date}}</h6>
-                                    <h6>Category: {{expense.category}}</h6>
-
-                                <a class="btn btn-secondary" href="{% url 'expenses' %}">Back</a>
-                                    <a class="btn btn-secondary" href="{% url 'expense-update' expense.id %}">Edit</a>
-{#                                    <input class="form-control" type="submit" name="Delete"  placeholder="Delete">#}
-                                    <button class="btn btn-secondary" id="submit" >Delete</button>
+                                    <form>
+                                        <h4>Expense: {{expense}}</h4>
+                                        <h6>Amount: {{expense.amount}}</h6>
+                                        <h6>Description: {{expense.description}}</h6>
+                                        <h6>Expense date: {{expense.date}}</h6>
+                                        <h6>Category: {{expense.category}}</h6>
+                                        <br>
+                                        <a class="btn btn-secondary" href="{% url 'expenses' %}">Back</a>
+                                        <a class="btn btn-secondary" href="{% url 'expense-update' expense.id %}">Edit</a>
+                                        <a class="btn btn-secondary" href="{% url 'expense-delete' expense.id %}" >Delete</a>
+                                    </form>
                                  </div>
                              </div>
 
