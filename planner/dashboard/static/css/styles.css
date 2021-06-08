@@ -3927,6 +3927,7 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  color: white;
 }
 .navbar-nav {
   display: flex;
@@ -3946,6 +3947,7 @@ textarea.form-control-lg {
 .navbar-text {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: white
 }
 
 .navbar-collapse {
@@ -10907,7 +10909,7 @@ body {
   z-index: 1039;
 }
 .sb-topnav .navbar-brand {
-  width: 225px;
+  width: 150px;
   margin: 0;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
