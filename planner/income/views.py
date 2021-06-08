@@ -19,7 +19,6 @@ class IncomeList(LoginRequiredMixin, ListView):
         return context
 
 
-
 class IncomeDetail(LoginRequiredMixin, DetailView):
     model = Income
     context_object_name = 'income'

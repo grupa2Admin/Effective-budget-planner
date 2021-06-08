@@ -10,29 +10,29 @@
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
+                <form>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Income Details</h3></div>
                                 <div class="card-body">
-
-                                <h4>Income: {{income}}</h4>
-
+                                    <h4>Income: {{income}}</h4>
+                                    <br>
                                     <h6>Income amount: {{income.amount}}</h6>
-                                <h6>Income date: {{income.date}}</h6>
+                                    <h6>Income date: {{income.date}}</h6>
+                                    <br>
+                                </div>
 
-
-                                <a class="btn btn-secondary" href="{% url 'incomes' %}">Back</a>
-                                    <a class="btn btn-secondary" href="{% url 'income-update' income.id %}">Edit</a>
-{#                                    <input class="form-control" type="submit" name="Delete"  placeholder="Delete">#}
-                                    <button class="btn btn-secondary" id="submit" >Delete</button>
-                                 </div>
+                            </div>
+                            <div class="card-footer text-left py-3">
+                            <a class="btn btn-secondary" href="{% url 'incomes' %}">Back</a>
+                            <a class="btn btn-secondary" href="{% url 'income-update' income.id %}">Edit</a>
+                            <a class="btn btn-secondary" href="{% url 'income-delete' income.id %}">Delete</a>
                              </div>
-
                         </div>
                     </div>
-                </div>
+                </form>
             </main>
         </div>
     </div>

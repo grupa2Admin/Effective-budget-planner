@@ -14,15 +14,17 @@
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Do you want to add/edit?</h3></div>
+                                <a class="nav-link" href="{% url 'main' %}">
+                                <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
+                                </a>
                                 <div class="card-body">
                                     <h3>Income: {{income}}</h3>
 
                                     <form method="POST" action="" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form|crispy}}
-                                    <br>
+                                    <br><br>
                                     <a class="btn btn-secondary" href="{% url 'incomes' %}">Back</a>
-
                                     <button class="btn btn-secondary" id="submit">Save</button>
                                     </form>
 
@@ -39,12 +41,3 @@
 
 
 {% endblock %}
-
-<h3>Income Form</h3>
-<a href="{% url 'incomes' %}">back</a>
-<form method="POST" action="" enctype="multipart/form-data">
-  {%csrf_token%}
-  {{form.as_p}}
-
-  <input type="submit" value="Save">
-</form>

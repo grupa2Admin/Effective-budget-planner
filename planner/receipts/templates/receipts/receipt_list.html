@@ -6,76 +6,7 @@
 
 {% block content %}
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-10">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="">Receipts</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            My Receipts
-          </li>
-        </ol>
-      </nav>
-    </div>
-
-
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-6">
-
-<div class="app-table">
-
-  <table class="table table-stripped table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {% for receipt in receipts %}
-      <tr>
-        <td>{{receipt.title}}</td>
-        <td>{{receipt.date}}</td>
-
-          <td><a href="{% url 'receipt' receipt.id  %}" class="btn btn-secondary btn-sm">View Receipt</a></td>
-          <td><a href="{% url 'receipt-update' receipt.id  %}" class="btn btn-secondary btn-sm">Edit</a></td>
-          <td><a href="{% url 'receipt-delete' receipt.id  %}" class="btn btn-secondary btn-sm">Delete</a></td>
-      </tr>
-
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-
-<p class="no-results" style="display: none;">No results </p>
-    <div class="table-output">
-
-
-        <br><br><br><br>
-        <tbody  class="table-body">
-
-            <div class="col-md-2">
-      <a href="{% url 'receipt-create'%}" class="btn btn-primary btn-sm">Add Receipt</a>
-    </div>
-  </div>
-
-        </tbody>
-      </table>
-    </div>
-
-{% endblock %}
-
-
-'''<body class="bg-light">
+<body class="bg-light">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -104,7 +35,6 @@
                                     <h3>No receipt in list</h3>
                                 {% endfor %}
                             </table>
-
                             <br><br><br><br><br><br>
 
                             <br><br><br><br><br><br>
@@ -116,4 +46,16 @@
             </main>
         </div>
     </div>
-</body>'''
+</body>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
