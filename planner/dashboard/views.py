@@ -10,6 +10,8 @@ from receipts.models import Receipt
 from expenses.models import Expense
 from income.models import Income
 from itertools import chain
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -60,6 +62,7 @@ def registerPage(request):
     return render(request, 'registration/register.html', context)
 
 
+@login_required()
 def search_page(request):
     if request.method == "POST":
         searched = request.POST['searched']

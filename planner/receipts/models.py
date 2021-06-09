@@ -8,6 +8,7 @@ class Receipt(models.Model):
     description = models.CharField(max_length=300, null=True, blank=True)
     date = models.DateField()
     image = models.ImageField(upload_to="img/%y")
+    type = 'receipt'
 
     def __str__(self):
         return self.title

@@ -25,18 +25,29 @@
                 <div class="table-responsive-lg">
                     <table class="table" >
                         <thead class=" text-primary">
-                            <th>Title</th><th>Date</th>
+                        </thead>
+                            <th>Title</th><th>Date</th><th>Type</th>
                             {% for result in results %}
                             <tr>
-                                <a href=""><td><strong>{{ result.title }}</strong></td></a>
+                                <td><strong>{% if result.type == 'expense' %}
+                                     <a href="{% url 'expense' result.id %}">{{ result.title }}</a>
+
+                                    {% elif result.type == 'income' %}
+                                     <a href="{% url 'income' result.id %}">{{ result.title }}</a>
+
+                                    {% elif result.type == 'receipt' %}
+                                     <a href="{% url 'receipt' result.id %}">{{ result.title }}</a>
+                                    {% endif %}
+                                    </strong></td>
                                 <td>{{ result.date }}</td>
+                                <td>{{ result.type }}</td>
                                 <td></td>
                             </tr>
                             {% endfor %}
                             {% else %}
                     <h1>Incorrect query, please try again</h1>
                         {% endif %}
-                        </thead>
+
                         <tbody>
                             <center>
 

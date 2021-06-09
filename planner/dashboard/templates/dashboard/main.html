@@ -31,11 +31,11 @@
                         <div class="navbar-brand ps-2 rm-1">No active user</div>
                     {% endif %}
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method=POST action="{% url 'search_page' %}" name="searched">
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method='POST' action="{% url 'search_page' %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search by title..." aria-label="Search for title..." aria-describedby="btnNavbarSearch" name="searched" />
-                    <a class="btn btn-primary" id="btnNavbarSearch" type="button" href="{% url 'search_page' %}"><i class="fas fa-search"></i></a>
+                    <input class="form-control" type="search" placeholder="Search by title..." aria-label="Search for title..." aria-describedby="btnNavbarSearch" name="searched" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
             <!-- Navbar-->

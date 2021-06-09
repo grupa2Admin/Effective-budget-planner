@@ -22,6 +22,7 @@ class Expense(models.Model):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     date = models.DateField(default=now)
     category = models.CharField(max_length=30, choices=CATEGORIES)
+    type = 'expense'
 
     def __str__(self):
         return self.title
