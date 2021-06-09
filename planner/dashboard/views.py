@@ -6,13 +6,20 @@ from django.contrib.auth import views as auth_views
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
+from receipts.models import Receipt
+from expenses.models import Expense
+from income.models import Income
+from itertools import chain
+from django.contrib.auth.decorators import login_required
+
+
 
 # Create your views here.
 
-from dashboard.forms import RegisterForm, UpdateProfileForm
+from .forms import RegisterForm, UpdateProfileForm
 
 
-# Create your views here.
+
 
 
 def main(request):
@@ -53,3 +60,16 @@ def registerPage(request):
         form = RegisterForm()
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+@login_required()
+def search_page(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        receipt_results = Receipt.objects.filter(title__contains=searched).filter(user=request.user)
+        expense_results = Expense.objects.filter(title__contains=searched).filter(user=request.user)
+        income_results = Income.objects.filter(title__contains=searched).filter(user=request.user)
+        results = chain(receipt_results, expense_results, income_results)
+        return render(request, 'dashboard/search_page.html', {'searched': searched, 'results': results})
+    else:
+        return render(request, 'dashboard/search_page.html', {})

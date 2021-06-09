@@ -31,11 +31,11 @@
                         <div class="navbar-brand ps-2 rm-1">No active user</div>
                     {% endif %}
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method='POST' action="{% url 'search_page' %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    <input class="form-control" type="search" placeholder="Search by title..." aria-label="Search for title..." aria-describedby="btnNavbarSearch" name="searched" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
             <!-- Navbar-->
@@ -175,16 +175,12 @@
                 <footer class="py-2 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-muted">Copyright &copy; Group 2</div>
                         </div>
                     </div>
                 </footer>
             </div>
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script> window.addEventListener('DOMContentLoaded', event => { // Toggle the side navigation

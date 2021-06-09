@@ -1,0 +1,83 @@
+{% extends 'dashboard/main.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Search{% endblock %}
+
+
+
+{% block content %}
+<br><br><br>
+<div class="row justify-content-center ">
+<div class="row" >
+    <div class="col-md-11 ">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <center>
+                    {% if searched %}
+                    <h2 class="card-title ">Searching results for: {{ searched }}</h2>
+                    <a class="nav-link" href="{% url 'main' %}">
+                    <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
+                    </a>
+                </center>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive-lg">
+                    <table class="table" >
+                        <thead class=" text-primary">
+                        </thead>
+                            <th>Title</th><th>Date</th><th>Type</th>
+                            {% for result in results %}
+                            <tr>
+                                <td><strong>{% if result.type == 'expense' %}
+                                     <a href="{% url 'expense' result.id %}">{{ result.title }}</a>
+
+                                    {% elif result.type == 'income' %}
+                                     <a href="{% url 'income' result.id %}">{{ result.title }}</a>
+
+                                    {% elif result.type == 'receipt' %}
+                                     <a href="{% url 'receipt' result.id %}">{{ result.title }}</a>
+                                    {% endif %}
+                                    </strong></td>
+                                <td>{{ result.date }}</td>
+                                <td>{{ result.type }}</td>
+                                <td></td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                    <h1>Incorrect query, please try again</h1>
+                        {% endif %}
+
+                        <tbody>
+                            <center>
+
+
+
+</center>
+
+                        </tbody>
+                    </table>
+                </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+<center>
+    {% if searched %}
+        <h1> Searching results for: {{ searched }}</h1>
+    <br/>
+    {% for result in results %}
+        {{ result }} <br/>
+    {% endfor %}
+    {% else %}
+        <h1>Incorrect query, please try again</h1>
+    {% endif %}
+</center>
+
+
