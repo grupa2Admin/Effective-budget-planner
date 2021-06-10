@@ -10,6 +10,7 @@
 <br><br><br>
 <div class="row justify-content-center ">
 <div class="row" >
+
     <center>
     <div class="col-md-9 ">
         <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -21,6 +22,7 @@
                     <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
                     </a>
                 </center>
+
                 </div>
                 <div class="card-body">
                 <div class="table-responsive-lg">
@@ -46,9 +48,9 @@
                                 <td>{{ result.type }}</td>
                                 <td></td>
 
-                            </tr>
-                            {% endfor %}
-                            {% else %}
+                              </tr>
+                              {% endfor %}
+                              {% else %}
                                 <h1>Incorrect query, please try again</h1>
                             {% endif %}
                         </tbody>
@@ -62,19 +64,4 @@
 </div>
 
 {% endblock %}
-
-
-
-<center>
-    {% if searched %}
-        <h1> Searching results for: {{ searched }}</h1>
-    <br/>
-    {% for result in results %}
-        {{ result }} <br/>
-    {% endfor %}
-    {% else %}
-        <h1>Incorrect query, please try again</h1>
-    {% endif %}
-</center>
-
 
