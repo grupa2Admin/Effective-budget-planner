@@ -1,20 +1,22 @@
-from .models import Expense
-from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
+
+from .models import Expense
 
 
 class ExpensesList(LoginRequiredMixin, ListView):
     model = Expense
     context_object_name = 'expenses'
     ordering = ['-date']
+    paginate_by = 5
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['expenses'] = context['expenses'].filter(user=self.request.user)
-        return context
+    def get_queryset(self):
+        queryset = super(ExpensesList, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
 
 
 class ExpenseDetail(LoginRequiredMixin, DetailView):

@@ -1,25 +1,24 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .form import ReceiptForm
-from .models import Receipt
-from django.views.generic.list import ListView
+from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
+
+from .form import ReceiptForm
+from .models import Receipt
 
 
 class ReceiptsList(LoginRequiredMixin, ListView):
     model = Receipt
     context_object_name = 'receipts'
     ordering = ['-date']
+    paginate_by = 5
 
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['receipts'] = context['receipts'].filter(user=self.request.user)
-
-        return context
-
+    def get_queryset(self):
+        queryset = super(ReceiptsList, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
 
 class ReceiptDetail(LoginRequiredMixin, DetailView):
     model = Receipt

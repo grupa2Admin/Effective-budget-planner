@@ -7,5 +7,4 @@ urlpatterns = [
     path('receipt-create/', ReceiptCreate.as_view(), name='receipt-create'),
     path('receipt-update/<int:pk>', ReceiptUpdate.as_view(), name='receipt-update'),
     path('receipt-delete/<int:pk>', DeleteView.as_view(), name='receipt-delete'),
-
 ]
