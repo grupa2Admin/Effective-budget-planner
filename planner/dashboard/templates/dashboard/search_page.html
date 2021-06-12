@@ -45,10 +45,9 @@
                                 <td>{{ result.date }}</td>
                                 <td>{{ result.type }}</td>
                                 <td></td>
-
-                            </tr>
-                            {% endfor %}
-                            {% else %}
+                              </tr>
+                              {% endfor %}
+                              {% else %}
                                 <h1>Incorrect query, please try again</h1>
                             {% endif %}
                         </tbody>
@@ -62,19 +61,4 @@
 </div>
 
 {% endblock %}
-
-
-
-<center>
-    {% if searched %}
-        <h1> Searching results for: {{ searched }}</h1>
-    <br/>
-    {% for result in results %}
-        {{ result }} <br/>
-    {% endfor %}
-    {% else %}
-        <h1>Incorrect query, please try again</h1>
-    {% endif %}
-</center>
-
 

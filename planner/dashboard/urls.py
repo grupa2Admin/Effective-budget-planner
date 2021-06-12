@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.urls import path, re_path
 from django.views.generic.base import RedirectView
+
 from . import views
 from .views import PasswordsChangeView, UserEditView
 from .views import search_page

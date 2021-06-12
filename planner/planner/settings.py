@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     # User applications #
     'receipts.apps.ReceiptsConfig',
     'dashboard.apps.DashboardConfig',
-    'expenses.apps.ExpensesConfig',
     'income.apps.IncomeConfig',
+    'expenses.apps.ExpensesConfig',
 ]
 
 MIDDLEWARE = [

@@ -68,3 +68,4 @@ def search_page(request):
         return render(request, 'dashboard/search_page.html', {'searched': searched, 'results': results})
     else:
         return render(request, 'dashboard/search_page.html', {})
+
