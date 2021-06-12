@@ -7,5 +7,4 @@ urlpatterns = [
     path('expense-create/', ExpenseCreate.as_view(), name='expense-create'),
     path('expense-update/<int:pk>', ExpenseUpdate.as_view(), name='expense-update'),
     path('expense-delete/<int:pk>', DeleteView.as_view(), name='expense-delete'),
-
 ]
