@@ -12,12 +12,13 @@ class ReceiptsList(LoginRequiredMixin, ListView):
     model = Receipt
     context_object_name = 'receipts'
     ordering = ['-date']
+    paginate_by = 2
+
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['receipts'] = context['receipts'].filter(user=self.request.user)
-
         return context
 
 

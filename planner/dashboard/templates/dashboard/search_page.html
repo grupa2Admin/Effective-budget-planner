@@ -10,8 +10,9 @@
 <br><br><br>
 <div class="row justify-content-center ">
 <div class="row" >
-    <div class="col-md-11 ">
-        <div class="card">
+    <center>
+    <div class="col-md-9 ">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
             <div class="card-header card-header-primary">
                 <center>
                     {% if searched %}
@@ -20,47 +21,43 @@
                     <i class="far fa-window-close" style="position:absolute;top:0;right:0;color:red;"></i>
                     </a>
                 </center>
-            </div>
-            <div class="card-body">
+                </div>
+                <div class="card-body">
                 <div class="table-responsive-lg">
                     <table class="table" >
                         <thead class=" text-primary">
-                        </thead>
                             <th>Title</th><th>Date</th><th>Type</th>
+                        </thead>
+                        <tbody>
                             {% for result in results %}
                             <tr>
-                                <td><strong>{% if result.type == 'expense' %}
-                                     <a href="{% url 'expense' result.id %}">{{ result.title }}</a>
-
+                                <td>
+                                    <strong>
+                                    {% if result.type == 'expense' %}
+                                    <a href="{% url 'expense' result.id %}">{{ result.title }}</a>
                                     {% elif result.type == 'income' %}
                                      <a href="{% url 'income' result.id %}">{{ result.title }}</a>
-
                                     {% elif result.type == 'receipt' %}
                                      <a href="{% url 'receipt' result.id %}">{{ result.title }}</a>
                                     {% endif %}
-                                    </strong></td>
+                                    </strong>
+                                </td>
                                 <td>{{ result.date }}</td>
                                 <td>{{ result.type }}</td>
                                 <td></td>
+
                             </tr>
                             {% endfor %}
                             {% else %}
-                    <h1>Incorrect query, please try again</h1>
-                        {% endif %}
-
-                        <tbody>
-                            <center>
-
-
-
-</center>
-
+                                <h1>Incorrect query, please try again</h1>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
-
+                </div>
+            </div>
         </div>
-    </div>
+    </center>
 </div>
 </div>
 

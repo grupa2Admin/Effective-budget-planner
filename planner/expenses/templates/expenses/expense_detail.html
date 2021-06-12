@@ -26,7 +26,7 @@
                                         <h6>Expense date: {{expense.date}}</h6>
                                         <h6>Category: {{expense.category}}</h6>
                                         <br>
-                                        <a class="btn btn-secondary" href="{% url 'expenses' %}">Back</a>
+                                        <a class="btn btn-secondary" href="javascript: window.history.back()">Back</a>
                                         <a class="btn btn-secondary" href="{% url 'expense-update' expense.id %}">Edit</a>
                                         <a class="btn btn-secondary" href="{% url 'expense-delete' expense.id %}" >Delete</a>
                                     </form>

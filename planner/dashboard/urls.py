@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.urls import path, re_path
 from django.views.generic.base import RedirectView
-from dashboard import views
-from dashboard.views import PasswordsChangeView, UserEditView
+from . import views
+from .views import PasswordsChangeView, UserEditView
 from .views import search_page
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
