@@ -1,6 +1,6 @@
 
 Effective-budget-planner app
-Our app is a simple application for use with Django. It's designed to manage your personal finances. You can add your expenses, income and even manage your more important receipts.
+Our app is a simple budget application built with Django. It's designed to manage your personal finances. You can add your expenses, income and even manage your more important receipts.
 
 
 Setup
@@ -8,7 +8,7 @@ Setup
 The first thing to do is clone the repository:
 https://github.com/grupa2Admin/Effective-budget-planner.git
 
-Create a virtual environment to install dependencies in and activate it:
+Create a virtual environment to install dependencies and activate it:
 
 $ virtualenv2 --no-site-packages env
 $ source env/bin/activate
@@ -17,7 +17,7 @@ Then install the dependencies:
 
 (env)$ pip install -r requirements.txt
 
-Once pip has finished downloading the dependencies:
+Once pip has finished downloading install the dependencies below:
 
 (env)$ cd project
 (env)$ python manage.py runserver
