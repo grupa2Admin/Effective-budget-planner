@@ -1,6 +1,6 @@
 
 Effective-budget-planner app
-Our app is a simple budget application built with Django. It's designed to manage your personal finances. You can add your expenses, income and even manage your more important receipts.
+Our app is a simple budget application built with Django. It's designed to manage your personal finances. You can add your expenses, income and even manage your more important receipts. We used Django 3.2.3 version and Python 3.8.
 
 
 Setup
