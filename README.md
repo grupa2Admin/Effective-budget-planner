@@ -12,6 +12,7 @@ Our app is a simple budget application built with Django. It's designed to manag
 2. Create a virtual environment to install dependencies and activate it:
 
 `virtualenv --no-site-packages env`
+
 `source env/bin/activate`
 
 3. Then install the dependencies:
